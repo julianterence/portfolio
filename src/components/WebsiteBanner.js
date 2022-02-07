@@ -32,6 +32,25 @@ const WebsiteBanner = (props) => {
     const RAINBOW_CHUNK_LENGTH = 4
     const SHADOW_LENGTH = RAINBOW_CHUNK_LENGTH * RAINBOW_COLORS.length
 
+    const setYPolarity = (xPolarity, e) => {
+        if(e.pageY < YLowBound) {
+            setPolarity({
+                x: xPolarity,
+                y: '-'
+            })
+        } else if(e.pageY > YLowBound && e.pageY < YUpBound) {
+            setPolarity(prevPolarity => ({
+                x: xPolarity,
+                y: '.'
+            }))
+        } else if(e.pageY > YUpBound) {
+            setPolarity(prevPolarity => ({
+                x: xPolarity,
+                y: '+'
+            }))
+        }
+    }
+
     const handleMouseMove = (e) => {
         setMousePosition({
             left: e.pageX,
@@ -39,56 +58,11 @@ const WebsiteBanner = (props) => {
         })
 
         if(e.pageX < XLowBound) {
-            if(e.pageY < YLowBound) {
-                setPolarity({
-                    x: '-',
-                    y: '-'
-                })
-            } else if(e.pageY > YLowBound && e.pageY < YUpBound) {
-                setPolarity(prevPolarity => ({
-                    x: '-',
-                    y: '.'
-                }))
-            } else if(e.pageY > YUpBound) {
-                setPolarity(prevPolarity => ({
-                    x: '-',
-                    y: '+'
-                }))
-            }
+            setYPolarity('-', e)
         } else if(e.pageX > XLowBound && e.pageX < XUpBound) {
-            if(e.pageY < YLowBound) {
-                setPolarity(prevPolarity => ({
-                    x: '.',
-                    y: '-'
-                }))
-            } else if(e.pageY > YLowBound && e.pageY < YUpBound) {
-                setPolarity(prevPolarity => ({
-                    x: '.',
-                    y: '.'
-                }))
-            } else if(e.pageY > YUpBound) {
-                setPolarity(prevPolarity => ({
-                    x: '.',
-                    y: '+'
-                }))
-            }
+            setYPolarity('.', e)
         } else if(e.pageX > XUpBound) {
-            if(e.pageY < YLowBound) {
-                setPolarity(prevPolarity => ({
-                    x: '+',
-                    y: '-'
-                }))
-            } else if(e.pageY > YLowBound && e.pageY < YUpBound) {
-                setPolarity(prevPolarity => ({
-                    x: '+',
-                    y: '.'
-                }))
-            } else if(e.pageY > YUpBound) {
-                setPolarity(prevPolarity => ({
-                    x: '+',
-                    y: '+'
-                }))
-            }
+            setYPolarity('+', e)
         }
     }
 
