@@ -1,15 +1,16 @@
 @font-face {
-  font-family: "Pixel Sans";
-  src: url("./fonts/pixel-sans-serif.woff2") format("woff2"),
+  font-family: 'px sans nouveaux';
+  src: url('./fonts/px_sans_nouveaux.woff2') format('woff2'),
+      url('./fonts/px_sans_nouveaux.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
-@font-face {
-  font-family: "Pixel Sans Condensed";
-  src: url("./fonts/pixel-sans-serif-condensed.woff2") format("woff2"),
-}
+
 
 body {
   margin: 0;
-  font-family: 'Pixel Sans', sans-serif;
+  font-family: "px sans nouveaux", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
